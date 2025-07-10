@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoRevival | Save Our Reefs - Coral Conservation Initiative</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #006994 0%, #004d6b 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><defs><linearGradient id="wave" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:%23ff7b7b;stop-opacity:0.3"/><stop offset="50%" style="stop-color:%23ffeb3b;stop-opacity:0.3"/><stop offset="100%" style="stop-color:%234fc3f7;stop-opacity:0.3"/></linearGradient></defs><path d="M0,200 Q300,100 600,200 T1200,200 L1200,400 L0,400 Z" fill="url(%23wave)"/></svg>') bottom center/cover no-repeat;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .crisis-banner {
+            background: linear-gradient(135deg, #ff4757, #ff3838);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 10px rgba(255, 71, 87, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        .stats-section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 40px 0;
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ffeb3b;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 40px 0;
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+            border-radius: 2px;
+        }
+        
+        .bleaching-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+            align-items: center;
+        }
+        
+        .coral-before, .coral-after {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        
+        .coral-before {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        }
+        
+        .coral-after {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+        }
+        
+        .coral-emoji {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .solution-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .solution-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #ff6b6b;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .timeline-item {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .year {
+            font-weight: bold;
+            color: #3498db;
+            font-size: 1.2rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .bleaching-visual {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .floating-stat {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 20px;
+            margin: 5px 0;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #2c3e50;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-stat">🌊 84% reefs affected</div>
+        <div class="floating-stat">🐠 500M people depend on reefs</div>
+        <div class="floating-stat">💰 $375B annual value</div>
+    </div>
+
+    <div class="crisis-banner">
+        🚨 URGENT: The largest coral bleaching event in history is happening NOW (2023-2025)
+    </div>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>🌊 CoRevival</h1>
+            <p class="subtitle">The Ocean's Rainforests Are Dying - But We Can Save Them</p>
+            <p>Coral reefs support 25% of marine life while covering less than 1% of ocean floor</p>
+        </div>
+        
+        <div class="stats-section">
+            <h2>The Coral Crisis in Numbers</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">50%</div>
+                    <div class="stat-label">Coral populations lost since 1980s</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">84%</div>
+                    <div class="stat-label">Reefs affected in current bleaching event</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500M</div>
+                    <div class="stat-label">People depend on reefs for survival</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">97%</div>
+                    <div class="stat-label">Wave energy absorbed by healthy reefs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$375B</div>
+                    <div class="stat-label">Annual economic value of coral reefs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100M</div>
+                    <div class="stat-label">Lives protected by coral reefs from floods</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🔥 What is Coral Bleaching?</h2>
+            <p style="font-size: 1.1rem; text-align: center; margin-bottom: 30px;">
+                When corals are stressed by rising temperatures, they expel the colorful algae that live in their tissues and provide them with food. This turns them white - or "bleached."
+            </p>
+            <div class="bleaching-visual">
+                <div class="coral-before">
+                    <span class="coral-emoji">🪸</span>
+                    <h3>Healthy Coral</h3>
+                    <p>Vibrant, colorful, teeming with life. Symbiotic algae (zooxanthellae) provide nutrients through photosynthesis.</p>
+                </div>
+                <div class="coral-after">
+                    <span class="coral-emoji">🤍</span>
+                    <h3>Bleached Coral</h3>
+                    <p>White, stressed, vulnerable. Algae expelled due to heat stress. Coral begins to starve without its food source.</p>
+                </div>
+            </div>
+            <div style="background: #fff3cd; padding: 20px; border-radius: 10px; border-left: 4px solid #ffc107; margin-top: 30px;">
+                <strong>⚠️ Critical Threshold:</strong> Just 1-2°C temperature increase for 4 weeks triggers bleaching. If temperatures stay high for 8+ weeks, corals die.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🌍 Global Impact: Current Bleaching Event</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="year">2023-2025</div>
+                    <p><strong>Fourth Global Coral Bleaching Event (GCBE4)</strong> - The largest in recorded history affects 84% of reefs across 82 countries.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">Australia</div>
+                    <p>Great Barrier Reef has lost <strong>over 50%</strong> of its shallow corals.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">India</div>
+                    <p>Bleaching events reported in <strong>Lakshadweep, Andaman & Nicobar Islands, Gulf of Mannar, and Gulf of Kachchh</strong>.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">March 2024</div>
+                    <p>Widespread bleaching in <strong>Lakshadweep Sea</strong> due to marine heatwaves recorded by CMFRI researchers.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🔬 Innovative Solutions: The Future of Coral Conservation</h2>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1rem;">
+                Scientists worldwide are developing breakthrough technologies to save our reefs
+            </p>
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-title">🧬 Genetic Engineering</div>
+                    <p>Engineering heat-resistant algae and corals with enhanced heat-shock proteins to survive rising temperatures.</p>
+                    <small><strong>Teams:</strong> Georgia State, UNSW Australia, NYU Abu Dhabi</small>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-title">🦠 Probiotic Bacteria</div>
+                    <p>Developing beneficial bacteria that produce antioxidants to neutralize harmful reactive oxygen species during heat stress.</p>
+                    <small><strong>Teams:</strong> Australian National University, UC San Diego</small>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-title">☀️ Natural UV Protection</div>
+                    <p>Creating microbial sunscreens using naturally-occurring compounds to protect corals from harmful UV radiation.</p>
+                    <small><strong>Teams:</strong> St Andrews, Hainan China</small>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-title">🧪 ROS Neutralization</div>
+                    <p>Engineering systems to combat reactive oxygen species - the primary cause of coral cell damage during bleaching.</p>
+                    <small><strong>Innovation:</strong> Catalase enzymes, glutathione systems</small>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-title">🦠 Microbiome Restoration</div>
+                    <p>Restoring healthy coral microbiomes with beneficial bacteria to improve overall reef resilience.</p>
+                    <small><strong>Focus:</strong> Exiguobacterium sp. AT1b, Endozoicomonas</small>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-title">🔒 Biosafety Controls</div>
+                    <p>All solutions include kill-switches and containment systems to ensure environmental safety and prevent uncontrolled spread.</p>
+                    <small><strong>Safety:</strong> Genetic firewalls, nutrient dependency</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🇮🇳 India's Coral Conservation Efforts</h2>
+            <div style="background: linear-gradient(135deg, #ff9933, #ffffff, #138808); padding: 30px; border-radius: 15px; color: #333; margin: 20px 0;">
+                <h3 style="text-align: center; margin-bottom: 20px;">🏛️ Government Initiatives</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.8); border-radius: 8px;">
+                        🛡️ <strong>Wildlife Protection Act 1972:</strong> Coral species listed under Schedule-I for highest protection
+                    </li>
+                    <li style="margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.8); border-radius: 8px;">
+                        🌊 <strong>Coastal Regulation Zone (CRZ) 2019:</strong> Prohibits waste disposal in coastal areas
+                    </li>
+                    <li style="margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.8); border-radius: 8px;">
+                        🔬 <strong>CMFRI Research:</strong> Central Marine Fisheries Research Institute monitoring ecological changes
+                    </li>
+                    <li style="margin: 10px 0; padding: 10px; background: rgba(255,255,255,0.8); border-radius: 8px;">
+                        🌱 <strong>Coral Transplantation:</strong> Active restoration programs in Lakshadweep
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2 style="color: white; margin-bottom: 20px;">🤝 How You Can Help Save Our Reefs</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px;">Every action counts in the race to save coral reefs</p>
+            <div>
+                <a href="#" class="cta-button">♻️ Reduce Carbon Footprint</a>
+                <a href="#" class="cta-button">🚫 Use Reef-Safe Sunscreen</a>
+                <a href="#" class="cta-button">💚 Support Conservation</a>
+                <a href="#" class="cta-button">📚 Spread Awareness</a>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>💡 The Science Behind the Solutions</h2>
+            <div style="background: #e8f4fd; padding: 30px; border-radius: 15px; border-left: 5px solid #2196f3;">
+                <h3>🔬 Heat-Shock Proteins (HSPs)</h3>
+                <p>These molecular "chaperones" help corals survive temperature stress by protecting cellular proteins from damage. Scientists are engineering corals to produce more HSPs.</p>
+            </div>
+            <div style="background: #f0f9ff; padding: 30px; border-radius: 15px; border-left: 5px solid #0ea5e9; margin-top: 20px;">
+                <h3>⚗️ Reactive Oxygen Species (ROS) Management</h3>
+                <p>Heat stress creates harmful molecules that damage coral cells. New treatments use enzymes like catalase to neutralize these toxins.</p>
+            </div>
+            <div style="background: #ecfdf5; padding: 30px; border-radius: 15px; border-left: 5px solid #10b981; margin-top: 20px;">
+                <h3>🧬 CRISPR & Gene Editing</h3>
+                <p>Cutting-edge gene editing allows scientists to enhance coral resilience while maintaining strict biosafety protocols with kill-switches.</p>
+            </div>
+        </div>
+
+        <!-- About Us Section -->
+        <div class="section" id="about-us">
+            <h2>👥 About Us</h2>
+            <p style="font-size: 1.15rem; text-align: center; margin-bottom: 10px;">
+                <strong>CoRevival</strong> is a youth-led initiative committed to the protection, revival, and sustainable future of coral reefs.<br>
+                We combine science, innovation, and community engagement to restore marine ecosystems and protect the biodiversity and cultures they support.
+            </p>
+        </div>
+        
+        <div class="footer">
+            <p>"The ocean is telling us a story. A story of beauty, survival, and warning. The question is, will we listen?"</p>
+            <p style="margin-top: 20px; font-size: 0.9rem;">Sources: NOAA, ICRI, CMFRI, iGEM Teams Worldwide | Data from peer-reviewed research</p>
+        </div>
+    </div>
+    
+    <script>
+        // Smooth scrolling animation for stats
+        window.addEventListener('scroll', function() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const rect = stat.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    if (!stat.classList.contains('animated')) {
+                        stat.classList.add('animated');
+                        animateCounter(stat);
+                    }
+                }
+            });
+        });
+        
+        function animateCounter(element) {
+            const target = element.textContent;
+            const isPercentage = target.includes('%');
+            const isMoney = target.includes('$');
+            const isNumber = target.includes('M') || target.includes('B');
+            
+            let endValue = parseInt(target.replace(/[^\d]/g, ''));
+            let startValue = 0;
+            const duration = 2000;
+            const increment = endValue / (duration / 50);
+            
+            const timer = setInterval(() => {
+                startValue += increment;
+                if (startValue >= endValue) {
+                    startValue = endValue;
+                    clearInterval(timer);
+                }
+                
+                let displayValue = Math.floor(startValue);
+                if (isPercentage) {
+                    element.textContent = displayValue + '%';
+                } else if (isMoney) {
+                    element.textContent = '$' + displayValue + (target.includes('B') ? 'B' : 'M');
+                } else if (isNumber) {
+                    element.textContent = displayValue + (target.includes('M') ? 'M' : 'B');
+                } else {
+                    element.textContent = displayValue;
+                }
+            }, 50);
+        }
+        
+        // Add parallax effect to floating elements
+        window.addEventListener('scroll', function() {
+            const floatingElements = document.querySelector('.floating-elements');
+            const scrolled = window.pageYOffset;
+            floatingElements.style.transform = `translateY(${scrolled * 0.2}px)`;
+        });
+    </script>
+</body>
+</html>
